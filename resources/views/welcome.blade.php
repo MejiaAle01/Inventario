@@ -15,7 +15,7 @@
                 @endif
                 <h3 class="is-size-3" align="center"> Iniciar sesión </h3>
                 <div class="card card-content m-4 p-5">
-                    <form action="{{ route('verify-user') }}" method="POST" id="loginForm" autocomplete="off">
+                    <form action="{{ route('verify.user') }}" method="POST" id="loginForm" autocomplete="off">
                         @csrf
                         <label class="label">
                             Usuario

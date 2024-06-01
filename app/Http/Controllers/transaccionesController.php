@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transacciones;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class transaccionesController extends Controller
@@ -11,7 +13,10 @@ class transaccionesController extends Controller
      */
     public function create()
     {
-        return view('interfaces/transacciones/create');
+        $datosProveedor = Transacciones::all();
+        $datosUsuario = User::all();
+
+        return view('interfaces/transacciones/create', compact('datosProveedor', 'datosUsuario'));
     }
 
     /**
@@ -19,7 +24,18 @@ class transaccionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $transaccion = new Transacciones();
+
+        $transaccion->entradas = $request->post('entrada');
+        $transaccion->salidas = $request->post('salida');
+        $transaccion->ajustes = $request->post('ajustes');
+        $transaccion->ucc = $request->post('ucc');
+        $transaccion->creado = $request->post('fecha');
+        $transaccion->proveedor_id = $request->post('proveedorSelecc');
+        $transaccion->user_id = $request->post('usuarioSelecc');
+        $transaccion->save();
+
+        return redirect()->route('login.dashboard')->with('success', 'Datos registrados correctamente');
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('plantilla/plantilla')
 
-@section('tituloPagina', 'Crear nuevo usuario')
+@section('tituloPagina', 'Nueva transacción')
 
 @section('contenido')
     <main class="container is-fluid">
@@ -13,62 +13,90 @@
                         </div>
                     </article>
                 @endif
-                <h3 class="is-size-3" align="center"> Nuevo registro </h3>
+                <h3 class="is-size-3" align="center"> Nueva transacción </h3>
                 <div class="card card-content m-4 p-5">
-                    <form action="{{-- route('personas.store') --}}" method="POST" autocomplete="off">
+                    <form action="{{ route('transaccion.store') }}" method="POST" autocomplete="off">
                         @csrf
                         <label class="label">
-                            Nombre
-                            <input type="text" name="name" placeholder="Nombre"
-                                class="input control is-hovered @error('name') is invalid @enderror" required
-                                title="Nombre" />
-                            @error('name')
+                            Entrada
+                            <input type="text" name="entrada"
+                                class="input control is-hovered @error('entrada') is invalid @enderror" required
+                                title="Entrada" />
+                            @error('entrada')
+                                <span class="has-text-danger"> {{ $message }} </span>
+                            @enderror
+                        </label>
+                        <label class="label">
+                            Salida
+                            <input type="text" name="salida"
+                                class="input control is-hovered @error('salida') is invalid @enderror" required
+                                title="Salida" />
+                            @error('salida')
                                 <span class="has-text-danger"> {{ $message }} </span>
                             @enderror
                         </label>
                         <label class="label
                             mt-4">
-                            Usuario
-                            <input type="text" name="username" placeholder="Usuario"
-                                class="input control is-hovered @error('username') is-invalid @enderror" required
-                                title="Usuario" maxlength="14" />
-                            @error('username')
+                            Ajustes
+                            <input type="text" name="ajustes"
+                                class="input control is-hovered @error('ajustes') is-invalid @enderror" required
+                                title="Ajustes" />
+                            @error('ajustes')
                                 <span class="has-text-danger"> {{ $message }} </span>
                             @enderror
                         </label>
                         <label class="label
                             mt-4">
-                            Correo
-                            <input type="email" name="email" placeholder="Correo"
-                                class="input control is-hovered @error('email') is-invalid @enderror" required
-                                title="Correo" />
-                            @error('email')
+                            UCC
+                            <input type="text" name="ucc"
+                                class="input control is-hovered @error('ucc') is-invalid @enderror" required
+                                title="Num. UCC" maxlength="12" />
+                            @error('ucc')
                                 <span class="has-text-danger"> {{ $message }} </span>
                             @enderror
                         </label>
                         <label class="label
                             mt-4">
-                            Telefono
-                            <input type="text" name="phone" placeholder="Telefono"
-                                class="input control is-hovered @error('phone') is-invalid @enderror" required
-                                title="Telefono" />
-                            @error('phone')
+                            Fecha
+                            <input type="string" name="fecha"
+                                class="input control is-hovered @error('fecha') is-invalid @enderror" required
+                                title="Fecha" />
+                            @error('fecha')
                                 <span class="has-text-danger"> {{ $message }} </span>
                             @enderror
+                            <p class="help is-info"> Ejemplo: 2024-05-31 12:45:00 </p>
                         </label>
                         <label class="label
                             mt-4">
-                            Sitio Web
-                            <input type="text" name="website" placeholder="Sitio Web"
-                                class="input control is-hovered @error('website') is-invalid @enderror" required
-                                title="Sitio Web" />
-                            @error('website')
-                                <span class="has-text-danger"> {{ $message }} </span>
-                            @enderror
+                            Proveedor
+                            <div class="control">
+                                <div class="select">
+                                    <select name="proveedorSelecc">
+                                        <option value="" disabled selected> Seleccione proveedor </option>
+                                        @foreach ($datosProveedor as $proveedor)
+                                            <option value="{{ $proveedor->id }}">{{ $proveedor->proveedores->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="label
+                            mt-4">
+                            Creado por
+                            <div class="control">
+                                <div class="select">
+                                    <select name="usuarioSelecc">
+                                        <option value="" disabled selected> Seleccione usuario </option>
+                                        @foreach ($datosUsuario as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->usuarios->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </label>
                         <div class="has-text-centered">
-                            <button type="submit" value="Iniciar Sesión"
-                                class="button is-link is-outlined is-rounded mt-4"> Crear registro </button>
+                            <button type="submit" class="button is-link is-outlined is-rounded mt-4"> Crear </button>
                         </div>
 
                     </form>

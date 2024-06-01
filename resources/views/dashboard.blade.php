@@ -57,11 +57,10 @@
     </header>
     <!-- END NAV -->
     <main class="container is-fluid">
-        <section>
+        <section class="section">
+            <h3 class="subtitle"> Listado de transacciones </h3>
             <div>
                 <p>
-                    <b> Listado de transacciones </b>
-                    <br>
                     @if (session('success'))
                         <article class="message is-black">
                             <div class="message-body">
@@ -143,11 +142,10 @@
                 </table>
             </div>
         </section>
-        <section>
+        <section class="section">
+            <h3 class="subtitle"> Listado de proveedores </h3>
             <div>
                 <p>
-                    <b> Listado de proveedores </b>
-                    <br>
                     @if (session('success'))
                         <article class="message is-black">
                             <div class="message-body">
@@ -225,11 +223,10 @@
                 </table>
             </div>
         </section>
-        <section>
+        <section class="section">
+            <h3 class="subtitile"> Listado de productos </h3>
             <div>
                 <p>
-                    <b> Listado de productos </b>
-                    <br>
                     @if (session('success'))
                         <article class="message is-black">
                             <div class="message-body">
