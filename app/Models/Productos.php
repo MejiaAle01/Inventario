@@ -13,4 +13,6 @@ class Productos extends Model
     {
         return $this->belongsTo(Proveedores::class, 'proveedor_id');
     }
+
+    public $timestamps = false;
 }

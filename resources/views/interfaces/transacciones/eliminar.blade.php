@@ -1,6 +1,6 @@
 @extends('plantilla/plantilla')
 
-@section('tituloPagina', 'Productos | Eliminar')
+@section('tituloPagina', 'Transacciones | Eliminar')
 
 @section('contenido')
     <main class="container is-fluid">
@@ -14,14 +14,17 @@
                             <p> ¿Está seguro que desea eliminar este registro? </p>
                         </div>
                         <div class="message-body">
-                            <p> Producto: <b>{{ $productos->producto }}</b></p>
-                            <p> Cantidad: <b>{{ $productos->cantidad }}</b></p>
-                            <p> Dirección: <b>{{ $productos->dirección }}</b></p>
-                            <p> Recibido: <b>{{ $productos->recibido }}</b></p>
-                            <p> Proveedor: <b>{{ $productos->proveedor_id }}</b></p>
+                            <p> Entrada: <b>{{ $transaccion->entradas }}</b></p>
+                            <p> Salida: <b>{{ $transaccion->salidas }}</b></p>
+                            <p> Ajustes: <b>{{ $transaccion->ajustes }}</b></p>
+                            <p> UCC: <b>{{ $transaccion->ucc }}</b></p>
+                            <p> Fecha: <b>{{ $transaccion->creado }}</b></p>
+                            <p> Proveedor: <b>{{ $transaccion->proveedores->nombre }}</b></p>
+                            <p> Creado por: <b>{{ $transaccion->usuarios->name }}</b></p>
                         </div>
                     </article>
-                    <form action="{{ route('producto.delete', encrypt($productos->id)) }}" method="POST" autocomplete="off">
+                    <form action="{{ route('transaccion.delete', encrypt($transaccion->id)) }}" method="POST"
+                        autocomplete="off">
                         @csrf
                         @method('DELETE')
                         <div class="has-text-centered">

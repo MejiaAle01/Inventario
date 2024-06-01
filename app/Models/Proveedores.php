@@ -9,6 +9,7 @@ class Proveedores extends Model
 {
     use HasFactory;
 
+
     public function transacciones()
     {
         return $this->hasMany(Transacciones::class, 'id');
@@ -18,4 +19,5 @@ class Proveedores extends Model
     {
         return $this->hasMany(Productos::class, 'id');
     }
+    public $timestamps = false;
 }

@@ -15,7 +15,9 @@ return new class extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('empresa');
-            $table->string('dirección');
+            $table->string('direccion');
+            $table->unsignedInteger('proveedor_id');
+            $table->unsignedInteger('transaccion_id');
         });
     }
 

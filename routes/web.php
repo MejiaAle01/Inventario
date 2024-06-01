@@ -17,36 +17,39 @@ Route::controller(transaccionesController::class)
     ->prefix('transacciones')
     ->as('transaccion.')
     ->group(function () {
+        Route::get('/inicio', 'index')->name('index');
         Route::get('/crear', 'create')->name('create');
         Route::post('/guardar', 'store')->name('store');
         Route::get('/editar/{id}', 'edit')->name('edit');
         Route::put('/actualizar/{id}', 'update')->name('update');
         Route::get('/mostrar/{id}', 'show')->name('show');
-        Route::delete('/eliminar/{id}', 'delete')->name('delete');
+        Route::delete('/eliminar/{id}', 'destroy')->name('delete');
     });
 
 Route::controller(proveedoresController::class)
     ->prefix('proveedores')
     ->as('proveedor.')
     ->group(function () {
+        Route::get('/inicio', 'index')->name('index');
         Route::get('/crear', 'create')->name('create');
         Route::post('/guardar', 'store')->name('store');
         Route::get('/editar/{id}', 'edit')->name('edit');
         Route::put('/actualizar/{id}', 'update')->name('update');
         Route::get('/mostrar/{id}', 'show')->name('show');
-        Route::delete('/eliminar/{id}', 'delete')->name('delete');
+        Route::delete('/eliminar/{id}', 'destroy')->name('delete');
     });
 
 Route::controller(productosController::class)
     ->prefix('productos')
     ->as('producto.')
     ->group(function () {
+        Route::get('/inicio', 'index')->name('index');
         Route::get('/crear', 'create')->name('create');
         Route::post('/guardar', 'store')->name('store');
         Route::get('/editar/{id}', 'edit')->name('edit');
         Route::put('/actualizar/{id}', 'update')->name('update');
         Route::get('/mostrar/{id}', 'show')->name('show');
-        Route::delete('/eliminar/{id}', 'delete')->name('delete');
+        Route::delete('/eliminar/{id}', 'destroy')->name('delete');
     });
 
 /*
